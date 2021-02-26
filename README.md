@@ -16,11 +16,9 @@
 
 ## About Vanity Numbers
 * What is a vanity phone number?
-
   * As per [line2.com](https://www.line2.com/articles/should-you-get-a-vanity-phone-number-for-your-business/), a vanity phone number is a custom-made set of digits that either spell out a word or are memorable in some way. For example, a building company may use 1-800-BUILDER (1-800-284-5337) as their business number, where the letters are spelled out using the numbers on the telephone keypad.
 
 * Why would someone want a vanity phone number?
-
   * According to [Adeptel](http://www.adeptel.com/vanity.asp), the marketing potential of an organization expands rapidly when using a vanity toll-free number. Sales increase, customer service improves, and because of the heightened brand recognition, your customers know who you are and how to contact you. Marketing efforts can seem almost effortless or become more focused in new product areas or markets.
 
 ### Initial Input Thoughts
@@ -43,9 +41,7 @@ Why I implemented the solution the way I did:
 * However, if you already have your phone number set in stone and can't change it, being able to calculate different ways you could potentially market the number you have, could be quite helpful. With this in mind, I knew a few things about this project would be simplified because essentially there a very limited margin for different inputs. The drawback to this is that many of the vanity options won't be very applicable for a caller, or there may be no vanity options available (like in the case of my own personal phone number).
 
 * One thing I was initially worried about was the whole aspect of defining vanity numbers. It seems that full 7-letter words are a bit of a rarity - most phone numbers won't be able to make that kind of combination. In addition, there can be so many different ways a number can be considered vanity:
-
   * If the number 1-800-356-9377 can return 1-800-FLOWERS, should it also return 1-800-FLOW-377?
-
   * I struggled with this for a while before finally deciding that due to time constraints and project scope, I would only calculate three different options:
 
     1. Seven-digit words that could come from the full 7 digits of a number.
@@ -131,7 +127,8 @@ What I would have liked to implement if I had more time to work on this project:
 #### lambdaTest.json
 #### words.json
 
-#### Running the app
+
+## Running the app
 1. Call the designated Amazon Connect phone number for this application
 2. Enjoy hearing Joey - one of Amazon Connect's automated voices, tell you which vanity phone number options are able to be associated with your phone number
 
