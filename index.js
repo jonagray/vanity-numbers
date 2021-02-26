@@ -1,8 +1,8 @@
 // --- Directions
 // Given a phone number with length of n:
-// Split phone number, grabbing the last 7 digits
-// Take the first 3 digits of that 7, and run the function on them
-// Take the last 4 digits of that 7, and run the function on them
+  // Split phone number, grabbing the last 7 digits
+  // Take the first 3 digits and last 4 digits of that 7, and calculate all possible letter combinations resulting from those chunks of numbers
+  // If any of those 3-digit and 4-digit letter combinations equate to a valid word, add it to the return array
 
 // Determine if the input phone number can be a vanity number
 // I.E. 1-800-292-FLOW(3569)
