@@ -32,10 +32,18 @@
 * This is how I initially thought about how a phone number input would go into the algorithm and be normalized for output.
 
 # Aproach
-* Outline
+  * This project as a whole felt like a unique take on a practical business need. Typically when I would think about vanity numbers, it was more along the lines of a business looking for the perfect phone number that they could purchase and use. I like the 1-800-BUILDER example - if you have a construction business and you're getting set up with a phone number, being able to search through available options and find something practical like 1-800-BUILDER, is ideal.
+  * However, if you already have your phone number set in stone and can't change it, being able to calculate different ways you could potentially market the number you have, could be quite helpful. With this in mind, I knew a few things about this project would be simplified because essentially there a very limited margin for different inputs. The drawback to this is that many of the vanity options won't be very applicable for a caller, or there may be no vanity options available (like in the case of my own personal phone number).
+  * Order I went about building project: algorithm, lambda-dynamo integration, then amazon connect.
 
 ## Implemented Solution Reasoning
 * Why I implemented the solution the way I did.
+* When I first started thinking about how to approach this project, my mind went to potentially working out a recursive solution. Recursive algorithms aren't my strong-suit, but I knew from past experiences that they were often a viable way to go about use cases like this.
+* Realistically, performance was always going to be a driving factor in a project like this. Calculating thousands of different possibilities depending on the input you get means that you need to be concerned with speed. In addition, hosting the code in a Lambda further advanced the need for a performant algorithm.
+* After I got the recursive solution working, it became clear that I needed to look in a different direction. The algorithm took around 30 seconds from start to finish in my local NodeJS environment, and an entire minute to run in a browser-based repl.it. Neither of those things were going to be fast enough to be considered for a Lambda.
+* Needing to do some serious refactoring, I opted first to try and rebuild my solution in an iterative way. This was much easier than I expected, as I'd already thought-out the logic for it when building the recursive approach I tried first.
+* The algorithm was definitely faster - but only by about 5 seconds. I was headed in the right direction, but it wasn't enough. To try and isolate what was taking the longest amount of time, inputting temporary timestamps was effective, as well as some of Google Chrome's built-in developer tools. The realization came to me, that the section where I checked the lengthy array of words (mostly gibberish letter combinations) was taking the bulk of the runtime. Initially, I looked around for the best way to check if a letter combination was a valid word or not, and many solutions involved APIs that were way too overengineered for what I needed. I found an NPM module called "check-words" that I had been using from the beginning. It simple checks a string to see if it is a valid word, and returns a boolean. This however, was the culprit for my long runtimes.
+* After much more googling than I would have preferred to do, it seemed the fastest option would be to find a resource file that had all the English Dictionary words, and then create a hashmap of it.
 
 ## Struggles
 * What I struggled with during this project.
